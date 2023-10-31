@@ -7,6 +7,12 @@ allcommentaires.forEach((commentaire) => {
     }
 });
 
+/*
+// création balise script chart.js :
+const scriptElement = document.createElement('script');
+scriptElement.src = "https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js";
+document.body.appendChild(scriptElement);
+*/
 
 // Extraction des données :
 const tableau = document.querySelector("#table1");
@@ -27,14 +33,16 @@ lignes.forEach((ligne, indiceLigne) => {
 
 console.table(dataYear);
 
+//bg-random :
 
-//graphique table1 :
+
+// Graphique pour table1 :
 let table1 = document.getElementById('table1');
-let canvas = document.createElement('canvas');
-table1.parentNode.insertBefore(canvas, table1);
+let canvas1 = document.createElement('canvas');
+table1.parentNode.insertBefore(canvas1, table1);
 document.addEventListener('DOMContentLoaded', function() {
-    let ctx = canvas.getContext('2d');
-    let myChart = new Chart(ctx, {
+    let ctx1 = canvas1.getContext('2d');
+    let myChart1 = new Chart(ctx1, {
         type: 'bar',
         data: {
             labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
@@ -61,30 +69,49 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// Graphique pour table2 :
+let table2 = document.getElementById('table2');
+let canvas2 = document.createElement('canvas');
+table2.parentNode.insertBefore(canvas2, table2);
 
 
 
+document.addEventListener('DOMContentLoaded', function() {
+    let ctx2 = canvas2.getContext('2d');
+    let myChart2 = new Chart(ctx2, {
+        type: 'bar',
+        data: {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [{
+                label: '# of Votes',
+                data: [12, 19, 3, 5, 2, 3],
+                backgroundColor: backgroundColors,
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+});
+
+function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+let backgroundColors = [];
+for (let i = 0; i < dataLabels.length; i++) {
+    backgroundColors.push(getRandomColor());
+}
 
 
-
-
-
-
-
-
-//test
-// Créez un élément img
-var image = document.createElement('img');
-
-// Définissez l'attribut src de l'image avec l'URL de l'image
-image.src = 'https://i.pinimg.com/236x/69/1f/9b/691f9b71ee4a5efa48b8ec1c652f2b6a.jpg';
-
-// Définissez des attributs supplémentaires si nécessaire
-image.alt = 'Description de l\'image'; // Remplacez par une description appropriée
-
-// Insérez l'image avant la table (au-dessus de la partie de la table)
-var table = document.getElementById('table1');
-table.parentNode.insertBefore(image, table);
 
 
 
