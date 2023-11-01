@@ -1,3 +1,5 @@
+/*const { Chart } = require("chart.js");*/
+
 //fermeture balise commentaire :
 const allcommentaires = document.querySelectorAll("*");
 
@@ -7,33 +9,85 @@ allcommentaires.forEach((commentaire) => {
     }
 });
 
-/*
-// création balise script chart.js :
-const scriptElement = document.createElement('script');
-scriptElement.src = "https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js";
-document.body.appendChild(scriptElement);
-*/
+//Tableau 2 :
+    //Création canvas2 :
+    let table2 = document.getElementById('table2');
+    let canvas2 = document.createElement('canvas');
+    table2.parentNode.insertBefore(canvas2, table2);
 
-// Extraction des données :
-const tableau = document.querySelector("#table1");
-const lignes = tableau.querySelectorAll("tbody tr");
-const dataYear = {
-    years: {}
-};
+    //Extration table2 :
+    const labels2 = [];
+    const datacol3 = [];
+    const datacol4 = [];
 
-lignes.forEach((ligne, indiceLigne) => {
-    const cellules = ligne.querySelectorAll("td");
-    if (indiceLigne === 0) {
-        for (let i = 2; i < cellules.length; i++) {
-            const annee = 2000 + i; // L'année commence en 2002, ajuster l'indice
-            dataYear.years[annee] = cellules[i].textContent;
-        }
+
+    for(let i = 1; i <table2.rows.length; i++){
+        const row = table2.rows[i];
+        const pays = row.cells[1].textContent;
+        const data = parseFloat(row.cells[2].textContent);
+        const data1 = parseFloat(row.cells[3].textContent);
+
+        labels2.push(pays);
+        datacol3.push(data);
+        datacol4.push(data1);
     }
+
+    //visualisation data test :
+    console.table(labels2);
+    console.table(datacol3);
+    console.table(datacol4);
+
+   /* //création du graphique2 :
+    const graph2 = new Chart(ctx,{
+        type: 'bar',
+        datasets: [{
+            labels: labels2,
+            data: datacol3,
+            backgroundColor: '#000000'
+
+        }]
+    })*/
+
+    const ctx2 = canvas2.getContext('2d');
+
+// Créez un nouveau graphique Chart.js
+const graph2 = new Chart(ctx2, {
+  type: 'bar',
+  data: {
+    labels: labels2,
+    datasets: [
+      {
+        label: '2007-09',
+        data: datacol3,
+        backgroundColor: '#0074D9'
+      },
+      {
+        label: '2010-12',
+        data: datacol4,
+        backgroundColor: '#FF851B'
+      }
+    ]
+  }
 });
 
-console.table(dataYear);
 
-//bg-random :
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // Graphique pour table1 :
@@ -70,6 +124,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Graphique pour table2 :
+/*
 let table2 = document.getElementById('table2');
 let canvas2 = document.createElement('canvas');
 table2.parentNode.insertBefore(canvas2, table2);
@@ -97,7 +152,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+*/
 
+/*
 function getRandomColor() {
     const letters = '0123456789ABCDEF';
     let color = '#';
@@ -110,7 +167,7 @@ let backgroundColors = [];
 for (let i = 0; i < dataLabels.length; i++) {
     backgroundColors.push(getRandomColor());
 }
-
+*/
 
 
 
@@ -154,4 +211,38 @@ lignes.forEach((ligne, index) => {
 // Afficher les données de la Belgique dans la console
 console.table(donneesBelgique);
 
+*/
+
+
+/*
+// création balise script chart.js :
+const scriptElement = document.createElement('script');
+scriptElement.src = "https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js";
+document.body.appendChild(scriptElement);
+
+scripElement.onload = function(){
+
+};
+*/
+/*
+// Extraction des données :
+const tableau = document.querySelector("#table1");
+const lignes = tableau.querySelectorAll("tbody tr");
+const dataYear = {
+    years: {}
+};
+
+lignes.forEach((ligne, indiceLigne) => {
+    const cellules = ligne.querySelectorAll("td");
+    if (indiceLigne === 0) {
+        for (let i = 2; i < cellules.length; i++) {
+            const annee = 2000 + i; // L'année commence en 2002, ajuster l'indice
+            dataYear.years[annee] = cellules[i].textContent;
+        }
+    }
+});
+
+console.table(dataYear);
+
+//bg-random :
 */
