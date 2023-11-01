@@ -1,6 +1,6 @@
 /*const { Chart } = require("chart.js");*/
 
-//fermeture balise commentaire :
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<< fermeture balise commentaire >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 const allcommentaires = document.querySelectorAll("*");
 
 allcommentaires.forEach((commentaire) => {
@@ -9,8 +9,7 @@ allcommentaires.forEach((commentaire) => {
     }
 });
 
-
-//Tableau 1 :
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Tableau 1 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     //Création canvas1 :
     let table1 = document.getElementById('table1');
     let canvas1 = document.createElement('canvas');
@@ -20,7 +19,6 @@ allcommentaires.forEach((commentaire) => {
     const years = [];
     const countries = [];
     const matrice = [];
-
 
     //Extraction nom pays + data:
     for(let i = 2; i <table1.rows.length; i++){
@@ -65,7 +63,7 @@ allcommentaires.forEach((commentaire) => {
         return `rgb(${r},${g},${b})`; 
       }
     const backgroundColors = matrice.map(() => randomColor());
-    
+
     //Creation graphique table1 :  
     let ctx1 = canvas1.getContext('2d');
     let myChart1 = new Chart(ctx1, {
@@ -81,13 +79,7 @@ allcommentaires.forEach((commentaire) => {
        
     });
 
-
-
-
-
-
-
-//Tableau 2 :
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Tableau 2 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     //Création canvas2 :
     let table2 = document.getElementById('table2');
     let canvas2 = document.createElement('canvas');
@@ -140,34 +132,3 @@ allcommentaires.forEach((commentaire) => {
     }
     });
 
-
-
-/*
-    function randomColor() {
-        const r = Math.floor(Math.random() * 256); // Valeur aléatoire entre 0 et 255 pour le rouge
-        const g = Math.floor(Math.random() * 256); // Valeur aléatoire entre 0 et 255 pour le vert
-        const b = Math.floor(Math.random() * 256); // Valeur aléatoire entre 0 et 255 pour le bleu
-      
-        return `rgb(${r},${g},${b})`; // Retourne la couleur au format "rgb(r,g,b)"
-      }
-    const backgroundColors = data.map(() => randomColor());
-      
-
-
-document.addEventListener('DOMContentLoaded', function() {
-    let ctx1 = canvas1.getContext('2d');
-    let myChart1 = new Chart(ctx1, {
-        type: 'bar',
-        data: {
-            labels: countries,
-            datasets: [{
-                label: '# of Votes',
-                data: matrice,
-                backgroundColor: backgroundColors,
-            }]
-        },
-       
-    });
-});
-
-*/
