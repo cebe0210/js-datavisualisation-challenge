@@ -9,6 +9,13 @@ allcommentaires.forEach((commentaire) => {
     }
 });
 
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Données distantes  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    //Création canvas0 :
+    let distant = 'https://canvasjs.com/services/data/datapoints.php';
+    let canvas0 = document.createElement('canvas');
+    table1.parentNode.insertBefore(canvas0, firstHeading);
+
+
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Tableau 1 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     //Création canvas1 :
     let table1 = document.getElementById('table1');
