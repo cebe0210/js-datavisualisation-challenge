@@ -11,9 +11,34 @@ allcommentaires.forEach((commentaire) => {
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Données distantes  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     //Création canvas0 :
-    let distant = 'https://canvasjs.com/services/data/datapoints.php';
+/*    let distant = 'https://canvasjs.com/services/data/datapoints.php';
     let canvas0 = document.createElement('canvas');
     table1.parentNode.insertBefore(canvas0, firstHeading);
+
+    console.table(distant); */
+
+
+    //test :
+    const url = 'https://canvasjs.com/services/data/datapoints.php';
+
+async function fetchData() {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error('Échec de la requête');
+        }
+        const data = await response.json();
+
+        // Afficher les données dans la console
+        console.table(data);
+    } catch (error) {
+        console.error('Erreur :', error);
+    }
+}
+
+fetchData();
+
+
 
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Tableau 1 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
