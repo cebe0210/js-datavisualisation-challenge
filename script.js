@@ -10,13 +10,13 @@ allcommentaires.forEach((commentaire) => {
 });
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Données distantes  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    //Création canvas0 :
-/*    let distant = 'https://canvasjs.com/services/data/datapoints.php';
+ /*   //Création canvas0 :
+    let distant = 'https://canvasjs.com/services/data/datapoints.php';
     let canvas0 = document.createElement('canvas');
     table1.parentNode.insertBefore(canvas0, firstHeading);
 
-    console.table(distant); */
-
+    console.table(distant); 
+*/
 
     //test :
     const url = 'https://canvasjs.com/services/data/datapoints.php';
@@ -30,13 +30,15 @@ async function fetchData() {
         const data = await response.json();
 
         // Afficher les données dans la console
-        console.table(data);
+      /*  console.table(data); */
     } catch (error) {
         console.error('Erreur :', error);
     }
 }
 
 fetchData();
+
+
 
 
 
@@ -80,11 +82,11 @@ fetchData();
     }
 
     //Visualisation data test :
-/* 
+ 
     console.table(countries);
     console.table(years);
     console.table(matrice);
-*/
+
     
     //Generation de couleur random :
     function randomColor() {
@@ -110,6 +112,42 @@ fetchData();
         },
        
     });
+
+    // Graphique interactif :
+
+        //update graphique :
+        function updateChart(index) {
+            const countryData = matrice[index];
+            const selectedcountry = countries[index];
+            myChart1.data.datasets[0].data = countryData;
+            myChart1.data.labels = years;
+            myChart1.data.datasets[0].label = selectedcountry;
+            myChart1.update();
+        }
+
+
+        //sourie event :
+
+        const countryRows = Array.from(table1.rows).slice(2);
+
+        countryRows.forEach((row, index) => {
+            row.addEventListener('mouseenter', () => {
+                updateChart(index);
+            });
+            
+            row.addEventListener('mouseleave', resetChart);
+        });
+
+        //Reset Graphique : 
+
+        function resetChart() {
+            myChart1.data.datasets[0].data = matrice[0];
+            myChart1.update();
+        }
+
+        
+
+
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Tableau 2 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     //Création canvas2 :
