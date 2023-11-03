@@ -10,13 +10,9 @@ allcommentaires.forEach((commentaire) => {
 });
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Données distantes  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
- /*   //Création canvas0 :
-    let distant = 'https://canvasjs.com/services/data/datapoints.php';
-    let canvas0 = document.createElement('canvas');
-    table1.parentNode.insertBefore(canvas0, firstHeading);
-
-    console.table(distant); 
-*/
+    //Création canvas0 :
+/*    let canvas0 = document.createElement('canvas');
+    firstHeading.parentNode.insertBefore(canvas0, firstHeading);
 
     //test :
     const url = 'https://canvasjs.com/services/data/datapoints.php';
@@ -30,7 +26,7 @@ async function fetchData() {
         const data = await response.json();
 
         // Afficher les données dans la console
-      /*  console.table(data); */
+      console.log('Données mises à jour avec succès');
     } catch (error) {
         console.error('Erreur :', error);
     }
@@ -38,7 +34,15 @@ async function fetchData() {
 
 fetchData();
 
+function dataUpgrate(){
+    fetchData();
+    const interval = 60000;
+    setInterval(fetchData, interval)
+}
+dataUpgrate();
 
+
+*/
 
 
 
@@ -54,7 +58,7 @@ fetchData();
     const countries = [];
     const matrice = [];
 
-    //Extraction nom pays + data:
+    //Extraction nom pays:
     for(let i = 2; i <table1.rows.length; i++){
         const row = table1.rows[i];
         const pays = row.cells[1].textContent;
@@ -82,11 +86,11 @@ fetchData();
     }
 
     //Visualisation data test :
- 
+ /*
     console.table(countries);
     console.table(years);
     console.table(matrice);
-
+*/
     
     //Generation de couleur random :
     function randomColor() {
@@ -101,17 +105,21 @@ fetchData();
     //Creation graphique table1 :  
     let ctx1 = canvas1.getContext('2d');
     let myChart1 = new Chart(ctx1, {
-        type: 'bar',
+        type: 'scatter',
         data: {
-            labels: countries,
-            datasets: [{
-                label: '# of Votes',
-                data: matrice,
-                backgroundColor: backgroundColors,
-            }]
+            labels: years,
+           datasets: countries.map((country, index) => {
+                //console.log(countries)
+                return {
+                    label: country, 
+                    data: matrice[index],
+                    backgroundColor: backgroundColors[index],
+                };
+            }), 
+                
         },
        
-    });
+    });  
 
     // Graphique interactif :
 
@@ -119,12 +127,14 @@ fetchData();
         function updateChart(index) {
             const countryData = matrice[index];
             const selectedcountry = countries[index];
-            myChart1.data.datasets[0].data = countryData;
-            myChart1.data.labels = years;
-            myChart1.data.datasets[0].label = selectedcountry;
+            myChart1.config.type = 'bar';
+            myChart1.data.datasets = [{
+                    label: selectedcountry,
+                    data: countryData,
+                    backgroundColor: backgroundColors,
+            }]
             myChart1.update();
         }
-
 
         //sourie event :
 
@@ -139,13 +149,15 @@ fetchData();
         });
 
         //Reset Graphique : 
-
+        const initialChart = myChart1.data
         function resetChart() {
-            myChart1.data.datasets[0].data = matrice[0];
+            // myChart1.data.datasets[0].data = matrice[0];
+            // myChart1.data.datasets[0].label = '';
+            myChart1.data = initialChart;
+            myChart1.config.type = 'scatter';
             myChart1.update();
         }
 
-        
 
 
 
