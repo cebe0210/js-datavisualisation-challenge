@@ -11,12 +11,32 @@ allcommentaires.forEach((commentaire) => {
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Données distantes  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     //Création canvas0 :
-/*    let canvas0 = document.createElement('canvas');
+   let canvas0 = document.createElement('canvas');
+   let firstHeading = document.querySelector('h1')
     firstHeading.parentNode.insertBefore(canvas0, firstHeading);
 
-    //test :
+
+
+    //Recuperation des data + MAJ :
     const url = 'https://canvasjs.com/services/data/datapoints.php';
 
+
+        //Création graphique : 
+    let ctx0 = canvas0.getContext('2d');
+    const graph0 = new Chart(ctx0, {
+        type: 'line',
+        data: {
+        labels: [],
+        datasets: [
+        {
+            label: '',
+            data: [],
+            backgroundColor: '#ff8888'
+        },
+        
+        ]
+    }
+    });
 async function fetchData() {
     try {
         const response = await fetch(url);
@@ -26,7 +46,16 @@ async function fetchData() {
         const data = await response.json();
 
         // Afficher les données dans la console
-      console.log('Données mises à jour avec succès');
+      console.log('Données mises à jour avec succès' + data);
+
+      const labels0 = data.map(item => item[0]);
+      const data0 = data.map(item => item[1]);
+      
+console.log(data0);
+      graph0.data.labels = labels0;
+      graph0.data.datasets[0].data = data0;
+      graph0.update();
+
     } catch (error) {
         console.error('Erreur :', error);
     }
@@ -40,10 +69,6 @@ function dataUpgrate(){
     setInterval(fetchData, interval)
 }
 dataUpgrate();
-
-
-*/
-
 
 
 
@@ -90,7 +115,7 @@ dataUpgrate();
     console.table(countries);
     console.table(years);
     console.table(matrice);
-*/
+ */
     
     //Generation de couleur random :
     function randomColor() {
@@ -109,7 +134,6 @@ dataUpgrate();
         data: {
             labels: years,
            datasets: countries.map((country, index) => {
-                //console.log(countries)
                 return {
                     label: country, 
                     data: matrice[index],
@@ -149,12 +173,15 @@ dataUpgrate();
         });
 
         //Reset Graphique : 
-        const initialChart = myChart1.data
         function resetChart() {
-            // myChart1.data.datasets[0].data = matrice[0];
-            // myChart1.data.datasets[0].label = '';
-            myChart1.data = initialChart;
             myChart1.config.type = 'scatter';
+            myChart1.data.datasets = countries.map((country, index) => {
+                return {
+                    label: country, 
+                    data: matrice[index],
+                    backgroundColor: backgroundColors[index],
+                };
+            }), 
             myChart1.update();
         }
 
