@@ -61,7 +61,22 @@ Le choix de la librairie javascript se limite aux 2 librairies proposées (il en
 
 ## Resultat :
 
+### Tableau 0:
+
+Le tableau 0 est une est tableau de données distant qui sont recupéré avec la fonction **fetch**.
+
+![Tableau-0](img/table0.png)
+
+
 ### Tableau 1:
+
+Le tableau numero 1 à enormement de données, se qui rend peu lisible.
+
+J'ai donc fais un graphique actif.
+
+Le comportement par defaut est un graphique ou chaque pays est une coleur et les données, des points de cette couleur. 
+
+Le comportement actif permet à l'utilisateur de voir les données d'un seul pays sous forme de barre, lorsque celui-ci survole le nom d'un pays du tableau. 
 
 #### Comportement par **defaut**
 
@@ -73,5 +88,10 @@ Le choix de la librairie javascript se limite aux 2 librairies proposées (il en
 
 
 ### Tableau 2 :
+
+Ce tableau ayant nombre de données gerable pour un graphique unique, j'ai choisi l'option du tableau statique.
+
+Chaque pays est representé par 2 barres. Une **bleue** qui affiche des données de la colonne **2007-09** et une barre **Orange** qui affiche les données de la colonne **2010-12**.
+
 
 ![tableau-2](img/table2.png)
