@@ -1,11 +1,24 @@
-## Data visualisation :
+# Data visualisation :
 
-[Version WEB](https://cebe0210.github.io/js-datavisualisation-challenge/ "exerice chart.js")
+## [Version WEB](https://cebe0210.github.io/js-datavisualisation-challenge/ "exerice chart.js")
 
 ## Context :
+
 Cet exercice **JavaScript** est réalisée dans le cadre ma formation de Web Developpeur Junior chez [BeCode](https://becode.org/all-trainings/pedagogical-framework-junior-developer/ "site BeCode")
 
 ![BeCode](https://res.cloudinary.com/studentbe/image/upload/f_auto,fl_progressive,q_auto:good,w_400/company_logos_179664_1520259212)
+
+
+## Objectifs :
+
+Ce challenge de consolidation vous aidera à évaluer votre capacité à résoudre un problème inspiré de situations réelles en utilisant vos nouveaux muscles javascript impliquant les savoir-faire suivants :
+
+Manipulation du DOM
+Requête AJAX / FETCH
+Utilisation de bibliothèques tierces
+résolution de problèmes : concevoir une solution logique pour mettre en œuvre le résultat attendu
+Débogage à l'aide de la console
+Comprendre la notion de « séparation des préoccupations »
 
 ## Votre mission :
 
@@ -40,8 +53,25 @@ Pour avoir un graphique, je dois trouver le bon endroit dans le DOM, comment fai
 Pour obtenir un graphique, j'utiliserai cette bibliothèque de visualisation de données . Comment ça marche?
 ...
 
-## Contraintes
+## Contraintes :
 
 Vous ne pouvez pas modifier le fichier html, sauf pour ajouter un fichier script.jspour charger votre js. Ne pas ajouter cssni modifier la structure duhtml
 Vous avez le choix du type de graphisme. Considère les plus pertinentes en fonction des données et de l'histoire qu'elles peuvent « raconter ».
 Le choix de la librairie javascript se limite aux 2 librairies proposées (il en existe bien d'autres, mais ce sont des références et sont très appréciées)
+
+## Resultat :
+
+### Tableau 1:
+
+#### Comportement par **defaut**
+
+![tableau-1-defaut](img/table1defaut.png)
+
+#### Comportement **actif**
+
+![tableau-1-actif](img/table1actif.png)
+
+
+### Tableau 2 :
+
+![tableau-2](img/table2.png)
